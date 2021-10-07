@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "weixin.work", "weixin.work\weixin.work.csproj", "{38423B65-5619-4AD3-87AB-F0DAAE63AB9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "Host\Host.csproj", "{240A440E-468F-4579-AC01-6677A37BA655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weixin.mp", "weixin.mp\weixin.mp.csproj", "{7EC48C95-1B28-4491-AD66-56DE27600039}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38423B65-5619-4AD3-87AB-F0DAAE63AB9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38423B65-5619-4AD3-87AB-F0DAAE63AB9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38423B65-5619-4AD3-87AB-F0DAAE63AB9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38423B65-5619-4AD3-87AB-F0DAAE63AB9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240A440E-468F-4579-AC01-6677A37BA655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240A440E-468F-4579-AC01-6677A37BA655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240A440E-468F-4579-AC01-6677A37BA655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240A440E-468F-4579-AC01-6677A37BA655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC48C95-1B28-4491-AD66-56DE27600039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC48C95-1B28-4491-AD66-56DE27600039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC48C95-1B28-4491-AD66-56DE27600039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC48C95-1B28-4491-AD66-56DE27600039}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63269BA9-89BD-489C-819C-894F0EACABE2}
+	EndGlobalSection
+EndGlobal

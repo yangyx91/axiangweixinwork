@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\weixin.mp\weixin.mp.csproj" />
+    <ProjectReference Include="..\weixin.work\weixin.work.csproj" />
+  </ItemGroup>
+
+</Project>
