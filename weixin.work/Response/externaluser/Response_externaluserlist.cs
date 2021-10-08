@@ -83,8 +83,10 @@ namespace weixin.work.Response.externaluser
             /// 该成员添加此外部联系人的时间
             /// </summary>
             public long createtime { get; set; }
-
-            public List<tag> tag_id { get; set; }
+            /// <summary>
+            /// 该成员添加此外部联系人所打企业标签的id
+            /// </summary>
+            public List<string> tag_id { get; set; }
             /// <summary>
             /// 该成员对此客户备注的企业名称
             /// </summary>
@@ -105,26 +107,6 @@ namespace weixin.work.Response.externaluser
             /// 企业自定义的state参数，用于区分客户具体是通过哪个「联系我」添加，由企业通过创建「联系我」方式指定
             /// </summary>
             public string state { get; set; }
-        }
-
-        public class tag
-        {
-            /// <summary>
-            /// 该成员添加此外部联系人所打标签的分组名称
-            /// </summary>
-            public string group_name { get; set; }
-            /// <summary>
-            /// 该成员添加此外部联系人所打标签名称
-            /// </summary>
-            public string tag_name { get; set; }
-            /// <summary>
-            /// 该成员添加此外部联系人所打标签类型, 1-企业设置，2-用户自定义，3-规则组标签（仅系统应用返回）
-            /// </summary>
-            public int type { get; set; }
-            /// <summary>
-            /// 该成员添加此外部联系人所打企业标签的id，用户自定义类型标签（type=2）不返回
-            /// </summary>
-            public string tag_id { get; set; }
         }
     }
 }
