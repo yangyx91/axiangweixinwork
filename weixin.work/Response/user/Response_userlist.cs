@@ -43,7 +43,7 @@ namespace weixin.work.Response.user
             /// <summary>
             /// 性别。0表示未定义，1表示男性，2表示女性
             /// </summary>
-            public string gender { get; set; }
+            public int gender { get; set; }
             /// <summary>
             /// 邮箱，代开发自建应用需要管理员授权才返回；第三方仅通讯录应用可获取；对于非第三方创建的成员，第三方通讯录应用也不可获取
             /// </summary>

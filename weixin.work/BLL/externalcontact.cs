@@ -47,6 +47,10 @@ namespace weixin.work.BLL
         private static string converttoopenidUrl =
             @"https://qyapi.weixin.qq.com/cgi-bin/externalcontact/convert_to_openid?access_token={0}";
 
+        private static string sendwelcomemsgUrl =
+          @"https://qyapi.weixin.qq.com/cgi-bin/externalcontact/send_welcome_msg?access_token={0}";
+
+
         private static string _accessToken = "";
 
         public externalcontact(string accessToken)
@@ -116,12 +120,11 @@ namespace weixin.work.BLL
                 var response = await HttpHelper.HttpPost(string.Format(getbyusersUrl, _accessToken), JsonConvert.SerializeObject(req));
                 if (!string.IsNullOrWhiteSpace(response))
                 {
-                    result = JsonConvert.DeserializeObject<Response_externaluserlist>(response);
-                } 
+                   result = JsonConvert.DeserializeObject<Response_externaluserlist>(response);
+                }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -334,5 +337,30 @@ namespace weixin.work.BLL
 
             return result;
         }
+
+        /// <summary>
+        /// 发送新客户欢迎语
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public async Task<Response_base> sendwelcomemsg(Request_sendwelcomemsg req) 
+        {
+            var result = new Response_base();
+            try
+            {
+                var response = await HttpHelper.HttpPost(string.Format(sendwelcomemsgUrl, _accessToken), JsonConvert.SerializeObject(req));
+                if (!string.IsNullOrWhiteSpace(response))
+                {
+                    result = JsonConvert.DeserializeObject<Response_base>(response);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
     }
 }

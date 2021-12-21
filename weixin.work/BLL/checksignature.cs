@@ -24,12 +24,16 @@ namespace weixin.work.BLL
         ///<param name="encodingKey">用于消息体的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取，是AESKey的Base64编码</param>
         ///<param name="receiveId">加解密库里，ReceiveId 在各个场景的含义不同：1,企业应用的回调，表示corpid；2,第三方事件的回调，表示suiteid</param>
         /// <returns></returns>
-        public static string Check(string msg_signature, string timestamp, string nonce,string echostr,string token, string encodingKey, string receiveId)
+        public static Dictionary<string, string> Check(string msg_signature, string timestamp, string nonce,string echostr,string token, string encodingKey, string receiveId="")
         {
+            var dict = new Dictionary<string, string>();
             var sReplyEchoStr = "";
+            var scorpId = "";
             var wXBizMsgCrypt = new WXBizMsgCrypt(token, encodingKey, receiveId);
-            wXBizMsgCrypt.VerifyURL(msg_signature, timestamp, nonce, echostr, ref sReplyEchoStr);
-            return sReplyEchoStr;
+            wXBizMsgCrypt.VerifyURL(msg_signature, timestamp, nonce, echostr, ref sReplyEchoStr,ref scorpId);
+            dict.Add("DecryptMsg", sReplyEchoStr);
+            dict.Add("DecryptCorpId", scorpId);
+            return dict;
         }
 
         /// <summary>

@@ -84,7 +84,7 @@ namespace weixin.work.Response.externaluser
             /// </summary>
             public long createtime { get; set; }
             /// <summary>
-            /// 该成员添加此外部联系人所打企业标签的id
+            /// 该成员添加此外部联系人所打企业标签的id，用户自定义类型标签（type=2）不返回
             /// </summary>
             public List<string> tag_id { get; set; }
             /// <summary>

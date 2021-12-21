@@ -42,7 +42,7 @@ namespace weixin.work
 	    // @param sToken: 公众平台上，开发者设置的Token
 	    // @param sEncodingAESKey: 公众平台上，开发者设置的EncodingAESKey
 	    // @param sAppID: 公众帐号的appid
-        public WXBizMsgCrypt(string sToken, string sEncodingAESKey, string sCorpID)
+        public WXBizMsgCrypt(string sToken, string sEncodingAESKey,string sCorpID)
         {
             m_sToken = sToken;
             m_sCorpID = sCorpID;
@@ -55,8 +55,9 @@ namespace weixin.work
         // @param sNonce: 随机串，对应URL参数的nonce
         // @param sEchoStr: 随机串，对应URL参数的echostr
         // @param sReplyEchoStr: 解密之后的echostr，当return返回0时有效
+        // @param scorpId: 解密之后的copid
         // @return：成功0，失败返回对应的错误码
-        public int VerifyURL(string sMsgSignature, string sTimeStamp, string sNonce, string sEchoStr, ref string sReplyEchoStr)
+        public int VerifyURL(string sMsgSignature, string sTimeStamp, string sNonce, string sEchoStr, ref string sReplyEchoStr,ref string scorpId)
         {
             int ret = 0;
             if (m_sEncodingAESKey.Length != 43)
@@ -73,17 +74,22 @@ namespace weixin.work
             try
             {
                 sReplyEchoStr = Cryptography.AES_decrypt(sEchoStr, m_sEncodingAESKey, ref cpid); //m_sCorpID);
+                if (!string.IsNullOrWhiteSpace(cpid))
+                {
+                    scorpId = cpid;
+                }
             }
             catch (Exception)
             {
                 sReplyEchoStr = "";
                 return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_DecryptAES_Error;
             }
-            if (cpid != m_sCorpID)
-            {
-                sReplyEchoStr = "";
-                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
-            }
+
+            //if (cpid != m_sCorpID)
+            //{
+                //sReplyEchoStr = "";
+                //return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
+            //}
             return 0;
         }
 
@@ -95,8 +101,9 @@ namespace weixin.work
         // @param sNonce: 随机串，对应URL参数的nonce
         // @param sPostData: 密文，对应POST请求的数据
         // @param sMsg: 解密后的原文，当return返回0时有效
+        // @param scorpId: 解密之后的copid
         // @return: 成功0，失败返回对应的错误码
-        public int DecryptMsg(string sMsgSignature, string sTimeStamp, string sNonce, string sPostData, ref string sMsg)
+        public int DecryptMsg(string sMsgSignature, string sTimeStamp, string sNonce, string sPostData, ref string sMsg,ref string scorpId)
         {
 			if (m_sEncodingAESKey.Length!=43)
 			{
@@ -125,6 +132,10 @@ namespace weixin.work
             try
             {
                 sMsg = Cryptography.AES_decrypt(sEncryptMsg, m_sEncodingAESKey, ref cpid);
+                if (!string.IsNullOrWhiteSpace(cpid))
+                {
+                    scorpId = cpid;
+                } 
             }
             catch (FormatException)
             {
@@ -134,8 +145,8 @@ namespace weixin.work
             {
                 return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_DecryptAES_Error;
             }
-            if (cpid != m_sCorpID)
-                return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
+            //if (cpid != m_sCorpID)
+            //    return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_ValidateCorpid_Error;
             return 0;
         }
 

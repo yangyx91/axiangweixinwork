@@ -23,6 +23,9 @@ namespace weixin.work.BLL
         private static string getUrl =
             @"https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token={0}&userid={1}";
 
+        private static string getuserinfoUrl =
+            @"https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token={0}&code={1}";
+
         private static string updateUrl =
             @"https://qyapi.weixin.qq.com/cgi-bin/user/update?access_token={0}";
 
@@ -113,6 +116,33 @@ namespace weixin.work.BLL
 
             return result;
         }
+
+        /// <summary>
+        /// 获取访问用户身份。该接口用于根据code获取成员信息，请求方式：GET（HTTPS）
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public async Task<Response_getuserinfoid> getuserinfoid(string code)
+        {
+            var result = new Response_getuserinfoid(); 
+            try
+            {
+                var response = await HttpHelper.HttpGet(string.Format(getuserinfoUrl, _accesstoken, code));
+                if (!string.IsNullOrWhiteSpace(response))
+                {
+                    result = JsonConvert.DeserializeObject<Response_getuserinfoid>(response);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return result;
+        }
+
+
 
         /// <summary>
         /// 更新成员 POST（HTTPS）

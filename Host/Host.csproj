@@ -3,7 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>c69c60a3-9459-417a-b4bf-4056577eaa2a</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.13" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\weixin.mp\weixin.mp.csproj" />
