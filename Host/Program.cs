@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using weixin.work.Response.token;
@@ -10,6 +12,29 @@ namespace Host
     {
         static void Main(string[] args)
         {
+            var builder = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            IConfiguration configuration = builder.Build();
+
+            //读取json WeiXin_Mp_Config配置
+
+            var appid = configuration.GetSection("WeiXin_Mp_Config").GetSection("AppId").Get<string>();
+            var appsecret = configuration.GetSection("WeiXin_Mp_Config").GetSection("AppSecret").Get<string>();
+
+            //HTML网页富文本转文档=HtmlAgilityPack
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml("<div><ul><li>新闻一</li><li>新闻二</li><ul></div>");
+            var nodes = doc.DocumentNode.SelectNodes("//div/ul");
+            if (nodes != null && nodes.Count > 0)
+            {
+                var liNodes = nodes[0].ChildNodes;
+                foreach (var li in liNodes)
+                {
+                    var text = li.InnerText;
+                }
+            }
+
             ///使用说明
             ///1、申明一个委托（获取Token=get）
             Func<Task<weixin.mp.Response.token.Response_gettoken>> funcGetWeiXinMPToken = () => new weixin.mp.BLL.gettoken("填写appid", "填写appsecret").get();

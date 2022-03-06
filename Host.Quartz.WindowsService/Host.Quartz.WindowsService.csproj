@@ -3,29 +3,29 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <UserSecretsId>c69c60a3-9459-417a-b4bf-4056577eaa2a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="nlog.config" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\weixin.mp\weixin.mp.csproj" />
-    <ProjectReference Include="..\weixin.work\weixin.work.csproj" />
+    <PackageReference Include="NLog" Version="4.7.14" />
+    <PackageReference Include="Quartz" Version="3.3.3" />
+    <PackageReference Include="Topshelf" Version="4.3.0" />
   </ItemGroup>
 
 </Project>

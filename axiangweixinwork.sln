@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "weixin.mp", "weixin.mp\weix
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "weixin.pay", "weixin.pay\weixin.pay.csproj", "{6C9B011D-1073-482C-B8AB-BD822578C914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Quartz.WindowsService", "Host.Quartz.WindowsService\Host.Quartz.WindowsService.csproj", "{E7ED4EA7-3A7F-4DF3-BBCD-D946A2689F80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6C9B011D-1073-482C-B8AB-BD822578C914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C9B011D-1073-482C-B8AB-BD822578C914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C9B011D-1073-482C-B8AB-BD822578C914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7ED4EA7-3A7F-4DF3-BBCD-D946A2689F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7ED4EA7-3A7F-4DF3-BBCD-D946A2689F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7ED4EA7-3A7F-4DF3-BBCD-D946A2689F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7ED4EA7-3A7F-4DF3-BBCD-D946A2689F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
