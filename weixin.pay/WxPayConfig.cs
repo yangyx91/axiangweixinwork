@@ -8,6 +8,7 @@ namespace weixin.pay
     {
         //商户号
         public static readonly string APPID = "";//微信appId
+        public static readonly string APPSecret = "";//微信Secret
         public static readonly string WxPay_Mch_ID = "";//微信支付商户号
         public static readonly string WxPay_Key = "";//商户平台 API安全里面设置的KEY  32位长度 
         public static readonly string Unified_OrderURL = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信支付Api
