@@ -17,7 +17,6 @@ namespace weixin.pay.Tencent
         */
         public static async Task<WxPayData> OrderQuery(WxPayData inputObj)
         {
-            string url = "https://api.mch.weixin.qq.com/pay/orderquery";
             //检测必填参数
             if (!inputObj.IsSet("out_trade_no") && !inputObj.IsSet("transaction_id"))
             {
@@ -29,7 +28,7 @@ namespace weixin.pay.Tencent
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign(WxPayData.SIGN_TYPE_MD5));//签名
             string xml = inputObj.ToXml();  
-            var response = await HttpHelper.HttpPost(url, xml);//调用HTTP通信接口提交数据
+            var response = await HttpHelper.HttpPost(WxPayConfig.Query_OrderURL, xml);//调用HTTP通信接口提交数据
             //将xml格式的数据转化为对象以返回
             WxPayData result = new WxPayData();
             result.FromXml(response);
@@ -192,7 +191,6 @@ namespace weixin.pay.Tencent
         */
         public static async Task<WxPayData> UnifiedOrder(WxPayData inputObj)
         {
-            string url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
             //检测必填参数
             if (!inputObj.IsSet("out_trade_no"))
             {
@@ -233,7 +231,7 @@ namespace weixin.pay.Tencent
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign(WxPayData.SIGN_TYPE_MD5)); //签名
             string xml = inputObj.ToXml();
-            var response =await HttpHelper.HttpPost(url,xml);//调用HTTP通信接口提交数据
+            var response =await HttpHelper.HttpPost(WxPayConfig.Unified_OrderURL, xml);//调用HTTP通信接口提交数据
             WxPayData result = new WxPayData();
             result.FromXml(response);
             return result;

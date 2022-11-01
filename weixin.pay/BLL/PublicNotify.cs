@@ -46,7 +46,7 @@ namespace weixin.pay.BLL
                 return res;
             }
 
-            string transaction_id = notifyData.GetValue("transaction_id").ToString();
+            string transaction_id = notifyData.GetValue("transaction_id").ToString(); //微信支付订单号
 
             //查询订单，判断订单付款是否成功
             if (!await QueryOrder(transaction_id))
